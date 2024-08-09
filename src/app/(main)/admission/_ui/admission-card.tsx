@@ -73,7 +73,7 @@ export default function AdmissionCard({
     );
   } else {
     return (
-      <Link href="/admission?tab=admission-process" passHref>
+      <Link href="/admission?tab=admission-process">
         <Card className="my-2">
           <CardContent>
             <h3 className="font-semibold">

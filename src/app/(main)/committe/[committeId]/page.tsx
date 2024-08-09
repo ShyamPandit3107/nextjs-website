@@ -17,11 +17,11 @@ const Committe = () => {
   const { committeId } = params;
   const [selectedContent, setSelectedContent] = useState("About");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const { data: committe } = useOneIqacAuthority(committeId);
+  const { data: committe } = useOneIqacAuthority(committeId as string);
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
-  const handleContentSelect = (item) => {
+  const handleContentSelect = (item: any) => {
     setSelectedContent(item);
     setIsSidebarOpen(false);
   };
@@ -42,7 +42,7 @@ const Committe = () => {
         } md:block w-full md:w-64 bg-background p-4`}
       >
         <ul>
-          {sidebar.map((item, index) => (
+          {sidebar.map((item: any, index: number) => (
             <li key={index} className="mb-2">
               <button
                 className={`w-full text-left p-4 hover:bg-primary hover:text-secondary focus:bg-primary focus:text-secondary transition-colors shadow-md bg-card rounded-sm ${

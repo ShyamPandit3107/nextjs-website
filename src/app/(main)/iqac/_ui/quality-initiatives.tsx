@@ -43,7 +43,7 @@ const QualityInitiatives = () => {
   const id = useStore((state) => state.id);
   const tabsToShow = 4;
   const { data: qualityInitiatives } = useQualityInitiatives({
-    id: id,
+    id: id as string,
     type: activeTab,
   });
   console.log(qualityInitiatives);

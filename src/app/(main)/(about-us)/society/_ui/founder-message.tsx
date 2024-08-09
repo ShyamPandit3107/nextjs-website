@@ -5,6 +5,7 @@ import { imageShowUrl } from "@/lib/BaseUrl";
 import Heading from "@/components/ui/heading";
 import Image from "next/image";
 import Content from "@/components/ui/content";
+import ImageViewer from "@/components/ui/image-viewer";
 
 const FounderMessage = ({
   designation,
@@ -32,7 +33,7 @@ const FounderMessage = ({
             {message && <Content>{message}</Content>}
           </div>
           <div className="sm:w-1/5 w-full flex flex-col items-center justify-center text-center">
-            <Image
+            <ImageViewer
               src={`${imageShowUrl}/${image}`}
               alt="founder image"
               width={250}

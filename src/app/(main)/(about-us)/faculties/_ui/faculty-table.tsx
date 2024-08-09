@@ -1,3 +1,4 @@
+import ImageViewer from "@/components/ui/image-viewer";
 import {
   Table,
   TableBody,
@@ -26,12 +27,12 @@ const FacultyTable = ({ data, name }: { data: any; name: string }) => {
         {data?.map((item: any, index: number) => (
           <TableRow
             key={index}
-            className={` pointer-events-none ${index & 1 ? "bg-gray-100" : ""}`}
+            className={` ${index & 1 ? "bg-gray-100" : ""}`}
           >
             <TableHead>{index + 1}</TableHead>
             <TableHead>
               {item?.staffProfilePhoto && (
-                <Image
+                <ImageViewer
                   src={`${imageShowUrl}/${item?.staffProfilePhoto}`}
                   alt="profile photo"
                   width={50}

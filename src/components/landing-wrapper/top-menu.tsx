@@ -47,7 +47,7 @@ export function TopMenu() {
   }, [iqacAuthority, setQid, setRndId]);
 
   return (
-    <Menubar className="flex justify-end bg-primary text-primary-foreground border-none">
+    <Menubar className="md:flex justify-end bg-primary text-primary-foreground border-none hidden">
       <MenubarMenu>
         <MenubarTrigger>
           <Link href="/admission?tab=new-admission">New Admission</Link>
@@ -180,7 +180,7 @@ export function TopMenu() {
       </MenubarMenu>
       <MenubarMenu>
         <MenubarTrigger>
-          <Link href="">Login</Link>
+          <Link href="https://dashboard.qviple.com/">Login</Link>
         </MenubarTrigger>
       </MenubarMenu>
     </Menubar>

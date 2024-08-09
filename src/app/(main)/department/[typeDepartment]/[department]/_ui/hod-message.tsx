@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Content from "@/components/ui/content";
 import Heading from "@/components/ui/heading";
+import ImageViewer from "@/components/ui/image-viewer";
 import { imageShowUrl } from "@/lib/BaseUrl";
 import Image from "next/image";
 import React from "react";
@@ -25,7 +26,7 @@ const HodMessage = ({
             {message && <Content>{message}</Content>}
           </div>
           <div className="sm:w-1/5 w-full flex flex-col items-center justify-center text-center">
-            <Image
+            <ImageViewer
               src={`${imageShowUrl}/${hodDetails?.dHead?.staffProfilePhoto}`}
               alt="founder image"
               width={250}

@@ -2,6 +2,7 @@ import { useIqacComposition } from "@/api/api-hooks";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Content from "@/components/ui/content";
 import Heading from "@/components/ui/heading";
+import ImageViewer from "@/components/ui/image-viewer";
 import {
   Table,
   TableBody,
@@ -42,7 +43,7 @@ const About = ({ about }: { about: any }) => {
                 )}
               </div>
               <div className="sm:w-1/5 w-full flex flex-col items-center justify-center text-center">
-                <Image
+                <ImageViewer
                   src={`${imageShowUrl}/${item?.sub_heading_image}`}
                   alt="founder image"
                   width={250}
@@ -80,7 +81,7 @@ const About = ({ about }: { about: any }) => {
                   <TableHead>{index + 1}</TableHead>
                   <TableHead>
                     {item?.student?.studentProfilePhoto && (
-                      <Image
+                      <ImageViewer
                         src={`${imageShowUrl}/${item?.student?.studentProfilePhoto}`}
                         alt="profile photo"
                         width={50}
@@ -103,7 +104,7 @@ const About = ({ about }: { about: any }) => {
                   <TableHead>{index + 1}</TableHead>
                   <TableHead>
                     {item?.staff?.staffProfilePhoto && (
-                      <Image
+                      <ImageViewer
                         src={`${imageShowUrl}/${item?.staff?.staffProfilePhoto}`}
                         alt="profile photo"
                         width={50}

@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Content from "@/components/ui/content";
 import Heading from "@/components/ui/heading";
+import ImageViewer from "@/components/ui/image-viewer";
 import SubHeading from "@/components/ui/sub-heading";
 import { imageShowUrl } from "@/lib/BaseUrl";
 import Image from "next/image";
@@ -23,9 +24,9 @@ const InnovativePractices = ({ data }: { data: any }) => {
                 {item?.description && <Content>{item?.description}</Content>}
               </div>
               <div className="sm:w-1/5 w-full flex flex-col items-center justify-center text-center">
-                <Image
+                <ImageViewer
                   src={`${imageShowUrl}/${item?.image}`}
-                  alt="founder image"
+                  alt="not found"
                   width={250}
                   height={250}
                 />

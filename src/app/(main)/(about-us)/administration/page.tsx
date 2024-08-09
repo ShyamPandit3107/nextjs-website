@@ -3,6 +3,7 @@ import { useWebsiteInfoByInstitute } from "@/api/api-hooks";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Content from "@/components/ui/content";
 import Heading from "@/components/ui/heading";
+import ImageViewer from "@/components/ui/image-viewer";
 import { imageShowUrl } from "@/lib/BaseUrl";
 import { useStore } from "@/store";
 import { set } from "date-fns";
@@ -14,13 +15,14 @@ const Administration = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const id = useStore((state) => state.id);
   const { data: websiteInfoByInstitute } = useWebsiteInfoByInstitute(id);
-  const [selectedContent, setSelectedContent] = useState("About Institute");
+  const [selectedContent, setSelectedContent] =
+    useState<any>("About Institute");
   const [administration, setAdministration] = useState([]);
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  const handleContentSelect = (item) => {
+  const handleContentSelect = (item: any) => {
     setSelectedContent(item);
     setIsSidebarOpen(false);
   };
@@ -87,7 +89,7 @@ const Administration = () => {
               </div>
               <div className="sm:w-1/5 w-full flex flex-col items-center justify-center text-center">
                 {selectedContent?.leading_person?.profilePhoto && (
-                  <Image
+                  <ImageViewer
                     src={`${imageShowUrl}/${selectedContent?.leading_person?.profilePhoto}`}
                     alt="founder image"
                     width={250}

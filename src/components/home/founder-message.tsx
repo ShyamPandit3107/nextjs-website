@@ -10,7 +10,7 @@ import Image from "next/image";
 import { imageShowUrl } from "@/lib/BaseUrl";
 import Content from "../ui/content";
 
-const FounderMessage = ({ data }) => {
+const FounderMessage = ({ data }: { data: any }) => {
   return (
     <div className="w-[95%] m-auto">
       <Card className="w-full text-center rounded-sm text-primary-foreground bg-primary">

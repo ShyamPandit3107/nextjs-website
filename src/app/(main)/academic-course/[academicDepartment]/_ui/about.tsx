@@ -1,4 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import ImageViewer from "@/components/ui/image-viewer";
 import { imageShowUrl } from "@/lib/BaseUrl";
 import { Heading } from "lucide-react";
 import Image from "next/image";
@@ -21,7 +22,7 @@ const About = ({
           <div className="md:w-4/5 w-full">{about}</div>
           <div className="sm:w-1/5 w-full flex flex-col items-center justify-center text-center">
             {image && (
-              <Image
+              <ImageViewer
                 src={`${imageShowUrl}/${image}`}
                 alt="founder image"
                 width={250}

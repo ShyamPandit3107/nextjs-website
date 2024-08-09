@@ -1,4 +1,5 @@
 import Heading from "@/components/ui/heading";
+import ImageViewer from "@/components/ui/image-viewer";
 import {
   Table,
   TableBody,
@@ -40,7 +41,7 @@ const Compositions = ({ data }: { data: any }) => {
                   <TableHead>{index + 1}</TableHead>
                   <TableHead>
                     {item?.student?.studentProfilePhoto && (
-                      <Image
+                      <ImageViewer
                         src={`${imageShowUrl}/${item?.student?.studentProfilePhoto}`}
                         alt="profile photo"
                         width={50}
@@ -63,7 +64,7 @@ const Compositions = ({ data }: { data: any }) => {
                   <TableHead>{index + 1}</TableHead>
                   <TableHead>
                     {item?.staff?.staffProfilePhoto && (
-                      <Image
+                      <ImageViewer
                         src={`${imageShowUrl}/${item?.staff?.staffProfilePhoto}`}
                         alt="profile photo"
                         width={50}

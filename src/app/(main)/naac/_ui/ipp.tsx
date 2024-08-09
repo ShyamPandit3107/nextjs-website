@@ -2,6 +2,7 @@ import { useIqacDetails } from "@/api/api-hooks";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Content from "@/components/ui/content";
 import Heading from "@/components/ui/heading";
+import ImageViewer from "@/components/ui/image-viewer";
 import { imageShowUrl } from "@/lib/BaseUrl";
 import { useStore } from "@/store";
 import Image from "next/image";
@@ -35,7 +36,7 @@ const Ipp = () => {
                 )}
               </div>
               <div className="sm:w-1/5 w-full flex flex-col items-center justify-center text-center">
-                <Image
+                <ImageViewer
                   src={`${imageShowUrl}/${item?.sub_heading_image}`}
                   alt="founder image"
                   width={250}

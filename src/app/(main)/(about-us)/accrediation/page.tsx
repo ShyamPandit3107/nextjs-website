@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/card";
 import Content from "@/components/ui/content";
 import Heading from "@/components/ui/heading";
+import ImageViewer from "@/components/ui/image-viewer";
 import PDFViewer from "@/components/ui/PDFViewer";
 import { imageShowUrl } from "@/lib/BaseUrl";
 import { useStore } from "@/store";
@@ -21,14 +22,15 @@ const Accrediation = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const id = useStore((state) => state.id);
   const { data: websiteInfoByInstitute } = useWebsiteInfoByInstitute(id);
-  const [selectedContent, setSelectedContent] = useState("About Institute");
+  const [selectedContent, setSelectedContent] =
+    useState<any>("About Institute");
   const [accrediation, setAccrediation] = useState([]);
   const [viewPdf, setViewPdf] = useState(null);
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  const handleContentSelect = (item) => {
+  const handleContentSelect = (item: any) => {
     setSelectedContent(item);
     setIsSidebarOpen(false);
   };
@@ -99,7 +101,7 @@ const Accrediation = () => {
               </div>
               <div className="sm:w-1/5 w-full flex flex-col items-center justify-center text-center">
                 {selectedContent?.image && (
-                  <Image
+                  <ImageViewer
                     src={`${imageShowUrl}/${selectedContent?.image}`}
                     alt="founder image"
                     width={250}

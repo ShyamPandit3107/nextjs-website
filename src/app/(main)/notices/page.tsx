@@ -2,8 +2,8 @@
 import { useLibrarySiteInfo, useNoticeInstitute } from "@/api/api-hooks";
 import { useStore } from "@/store";
 import { Menu } from "lucide-react";
-import React, { useState } from "react";
-import OneNotices from "./_ui/oneNotice";
+import React, { useEffect, useState } from "react";
+import OneNotices from "./_ui/one-notice";
 import { useSearchParams } from "next/navigation";
 
 const Notices = () => {
@@ -20,10 +20,15 @@ const Notices = () => {
   const [selectedContent, setSelectedContent] = useState(
     nid || notices?.announcement?.[0]._id
   );
+  useEffect(() => {
+    if (notices?.announcement) {
+      setSelectedContent(notices?.announcement?.[0]._id);
+    }
+  }, []);
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
-  const handleContentSelect = (item) => {
+  const handleContentSelect = (item: any) => {
     setSelectedContent(item);
     setIsSidebarOpen(false);
   };
@@ -45,7 +50,7 @@ const Notices = () => {
         } md:block w-full md:w-64 bg-background p-4 h-[30rem] overflow-y-auto`}
       >
         <ul>
-          {notices?.announcement?.map((item, index) => (
+          {notices?.announcement?.map((item: any, index: number) => (
             <li key={index} className="mb-2">
               <button
                 className={`w-full text-left p-4 hover:bg-primary hover:text-secondary focus:bg-primary focus:text-secondary transition-colors shadow-md bg-card rounded-sm ${

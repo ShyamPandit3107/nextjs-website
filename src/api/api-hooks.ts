@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import {
   fetchAcademicModule,
   fetchAdmissionDetails,
@@ -49,6 +49,7 @@ import {
   fetchWebsiteInfoByInstitute,
 } from "./query";
 import { data } from "@/lib/type";
+import { sendEnquiry } from "./mutation";
 
 export const useInstituteMaster = (id: string | undefined) => {
   return useQuery({
@@ -366,7 +367,7 @@ export const useOneIqacAuthority = (qcid: string | undefined) => {
 };
 
 export const useIqacComposition = (
-  data: { qcid: string; limit: number; page: number } | undefined
+  data: { qcid: string | undefined; limit: number; page: number } | undefined
 ) => {
   return useQuery({
     queryKey: ["iqacComposition", data?.qcid, data?.page, data?.limit],
@@ -378,7 +379,7 @@ export const useIqacComposition = (
 export const useIqacDetails = (
   data:
     | {
-        id: string;
+        id: string | undefined;
         page: number;
         limit: number;
         flow: string;

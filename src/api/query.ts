@@ -282,14 +282,6 @@ export const fetchExaminationDetails = async (eid: string | undefined) => {
   return response.data;
 };
 
-export const sendEnquiry = async (data: any) => {
-  const response = await apiClient.post(
-    `v1/landing/${data.aid}/new/inquiry/query`,
-    data.enquiry
-  );
-  return response.data;
-};
-
 export const fetchSiteOpener = async (id: any) => {
   const response = await apiClient.get(`/v1/site/institute/${id}/opener`);
   return response.data;

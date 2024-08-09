@@ -11,6 +11,7 @@ import Image from "next/image";
 import { imageShowUrl } from "@/lib/BaseUrl";
 import { useIqacComposition } from "@/api/api-hooks";
 import { useStore } from "@/store";
+import ImageViewer from "@/components/ui/image-viewer";
 const Composition = () => {
   const qid = useStore((state) => state.qid);
   const { data: compostion } = useIqacComposition({
@@ -48,7 +49,7 @@ const Composition = () => {
                   <TableHead>{index + 1}</TableHead>
                   <TableHead>
                     {item?.student?.studentProfilePhoto && (
-                      <Image
+                      <ImageViewer
                         src={`${imageShowUrl}/${item?.student?.studentProfilePhoto}`}
                         alt="profile photo"
                         width={50}
@@ -71,7 +72,7 @@ const Composition = () => {
                   <TableHead>{index + 1}</TableHead>
                   <TableHead>
                     {item?.staff?.staffProfilePhoto && (
-                      <Image
+                      <ImageViewer
                         src={`${imageShowUrl}/${item?.staff?.staffProfilePhoto}`}
                         alt="profile photo"
                         width={50}

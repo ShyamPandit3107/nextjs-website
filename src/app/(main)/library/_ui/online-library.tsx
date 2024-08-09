@@ -15,6 +15,7 @@ import { useStore } from "@/store";
 import { useAllBooksByLibrary } from "@/api/api-hooks";
 import { imageShowUrl } from "@/lib/BaseUrl";
 import Heading from "@/components/ui/heading";
+import ImageViewer from "@/components/ui/image-viewer";
 
 export default function LibraryOnline() {
   const libraryId = useStore((state) => state.ids.libraryId);
@@ -26,13 +27,13 @@ export default function LibraryOnline() {
     search: "",
   });
   console.log(getAllBookByLibrary);
-  const BookCard = ({ book }) => (
+  const BookCard = ({ book }: { book: any }) => (
     <Card
       className="flex items-center bg-white hover:bg-gray-50 shadow-md rounded-lg p-2 my-2 mx-4 cursor-pointer"
       onClick={() => setSelectedBook(book)}
     >
       <CardContent className="flex p-0">
-        <Image
+        <ImageViewer
           src={`${imageShowUrl}/`}
           alt={book?.bookName}
           width={80}
@@ -56,14 +57,14 @@ export default function LibraryOnline() {
     </Card>
   );
 
-  const BookDetailsModal = ({ book, onClose }) => (
+  const BookDetailsModal = ({ book, onClose }: { book: any; onClose: any }) => (
     <Dialog open={!!book} onOpenChange={() => onClose()}>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>{book?.bookName}</DialogTitle>
         </DialogHeader>
         <div className="flex items-center gap-4">
-          <Image
+          <ImageViewer
             src={`/pdf-viewer/${book?.photo}`}
             alt={book?.bookName}
             width={80}
@@ -113,7 +114,7 @@ export default function LibraryOnline() {
     <div className="my-2">
       <Heading>Online Library</Heading>
       <div className="grid grid-cols-1 md:grid-cols-3">
-        {getAllBookByLibrary?.books?.map((book, index) => (
+        {getAllBookByLibrary?.books?.map((book: any, index: number) => (
           <BookCard key={index} book={book} />
         ))}
       </div>
