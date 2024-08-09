@@ -18,7 +18,7 @@ const Footer = ({ instituteAbout }: any) => {
                 <p>{instituteAbout?.insAddress}</p>
                 <p className="mt-4">
                   <strong>Contact:</strong>
-                  {(instituteAbout.insPhoneNumber &&
+                  {(instituteAbout?.insPhoneNumber &&
                     typeof instituteAbout?.insPhoneNumber === "bigint") ||
                   typeof instituteAbout?.insPhoneNumber === "number" ? (
                     <p className="text-normal">
@@ -37,7 +37,7 @@ const Footer = ({ instituteAbout }: any) => {
                 <p className="mt-4">
                   <strong>Email:</strong>
                 </p>
-                <p>iqac@hptrykcollege.com</p>
+                <p>{instituteAbout?.insEmail}</p>
               </div>
 
               {/* Quick Links */}
