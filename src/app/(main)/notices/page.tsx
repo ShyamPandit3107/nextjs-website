@@ -2,7 +2,7 @@
 import { useLibrarySiteInfo, useNoticeInstitute } from "@/api/api-hooks";
 import { useStore } from "@/store";
 import { Menu } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import OneNotices from "./_ui/one-notice";
 import { useSearchParams } from "next/navigation";
 
@@ -34,44 +34,46 @@ const Notices = () => {
   };
   console.log(notices);
   return (
-    <div className="flex flex-col md:flex-row border-t-1 border-back ">
-      {/* Mobile menu button */}
-      <button
-        className="md:hidden p-4 bg-background text-primary"
-        onClick={toggleSidebar}
-      >
-        <Menu size={24} />
-      </button>
+    <Suspense fallback={<div>Loading...</div>}>
+      <div className="flex flex-col md:flex-row border-t-1 border-back ">
+        {/* Mobile menu button */}
+        <button
+          className="md:hidden p-4 bg-background text-primary"
+          onClick={toggleSidebar}
+        >
+          <Menu size={24} />
+        </button>
 
-      {/* Sidebar */}
-      <div
-        className={`${
-          isSidebarOpen ? "block" : "hidden"
-        } md:block w-full md:w-64 bg-background p-4 h-[30rem] overflow-y-auto`}
-      >
-        <ul>
-          {notices?.announcement?.map((item: any, index: number) => (
-            <li key={index} className="mb-2">
-              <button
-                className={`w-full text-left p-4 hover:bg-primary hover:text-secondary focus:bg-primary focus:text-secondary transition-colors shadow-md bg-card rounded-sm ${
-                  selectedContent === item._id
-                    ? "bg-primary text-secondary"
-                    : ""
-                }`}
-                onClick={() => handleContentSelect(item?._id)}
-              >
-                {item?.insAnnTitle}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
+        {/* Sidebar */}
+        <div
+          className={`${
+            isSidebarOpen ? "block" : "hidden"
+          } md:block w-full md:w-64 bg-background p-4 h-[30rem] overflow-y-auto`}
+        >
+          <ul>
+            {notices?.announcement?.map((item: any, index: number) => (
+              <li key={index} className="mb-2">
+                <button
+                  className={`w-full text-left p-4 hover:bg-primary hover:text-secondary focus:bg-primary focus:text-secondary transition-colors shadow-md bg-card rounded-sm ${
+                    selectedContent === item._id
+                      ? "bg-primary text-secondary"
+                      : ""
+                  }`}
+                  onClick={() => handleContentSelect(item?._id)}
+                >
+                  {item?.insAnnTitle}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-      {/* Main content */}
-      <div className="flex-1 p-6">
-        <OneNotices id={selectedContent} />
+        {/* Main content */}
+        <div className="flex-1 p-6">
+          <OneNotices id={selectedContent} />
+        </div>
       </div>
-    </div>
+    </Suspense>
   );
 };
 

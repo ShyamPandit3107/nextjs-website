@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import OneEvent from "./_ui/one-event";
 import { useStore } from "@/store";
 import { Menu } from "lucide-react";
@@ -25,47 +25,48 @@ const Events = () => {
   console.log(allEvents);
   //   console.log(selectedContent);
   return (
-    <div>
-      <div className="flex flex-col md:flex-row border-t-1 border-back ">
-        {/* Mobile menu button */}
-        <button
-          className="md:hidden p-4 bg-background text-primary"
-          onClick={toggleSidebar}
-        >
-          <Menu size={24} />
-        </button>
+    <Suspense fallback={<div>Loading...</div>}>
+      <div>
+        <div className="flex flex-col md:flex-row border-t-1 border-back ">
+          {/* Mobile menu button */}
+          <button
+            className="md:hidden p-4 bg-background text-primary"
+            onClick={toggleSidebar}
+          >
+            <Menu size={24} />
+          </button>
 
-        {/* Sidebar */}
-        <div
-          className={`${
-            isSidebarOpen ? "block" : "hidden"
-          } md:block w-full md:w-64 bg-background p-4 h-[30rem] overflow-y-auto`}
-        >
-          <ul>
-            {allEvents?.all_events?.map((item: any, index: number) => (
-              <li key={index} className="mb-2">
-                <button
-                  className={`w-full text-left p-4 hover:bg-primary hover:text-secondary focus:bg-primary focus:text-secondary transition-colors shadow-md bg-card rounded-sm ${
-                    selectedContent === item._id
-                      ? "bg-primary text-secondary"
-                      : ""
-                  }`}
-                  onClick={() => handleContentSelect(item?._id)}
-                >
-                  {item?.event_name}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
+          {/* Sidebar */}
+          <div
+            className={`${
+              isSidebarOpen ? "block" : "hidden"
+            } md:block w-full md:w-64 bg-background p-4 h-[30rem] overflow-y-auto`}
+          >
+            <ul>
+              {allEvents?.all_events?.map((item: any, index: number) => (
+                <li key={index} className="mb-2">
+                  <button
+                    className={`w-full text-left p-4 hover:bg-primary hover:text-secondary focus:bg-primary focus:text-secondary transition-colors shadow-md bg-card rounded-sm ${
+                      selectedContent === item._id
+                        ? "bg-primary text-secondary"
+                        : ""
+                    }`}
+                    onClick={() => handleContentSelect(item?._id)}
+                  >
+                    {item?.event_name}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        {/* Main content */}
-        <div className="flex-1 p-6">
-          <OneEvent evid={selectedContent} />
+          {/* Main content */}
+          <div className="flex-1 p-6">
+            <OneEvent evid={selectedContent} />
+          </div>
         </div>
       </div>
-    </div>
-    // <div>hi</div>
+    </Suspense>
   );
 };
 
