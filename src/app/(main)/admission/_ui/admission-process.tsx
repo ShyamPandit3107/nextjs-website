@@ -91,7 +91,7 @@ export default function AdmissionProcess() {
               <TabsTrigger value="mh">मराठी</TabsTrigger>
             </TabsList>
             <TabsContent value="en">
-              <Image
+              <ImageViewer
                 src={`${imageShowUrl}/${admissionDetails?.admission?.app_qr_code}`}
                 alt="QR Code English"
                 width={320}
@@ -99,7 +99,7 @@ export default function AdmissionProcess() {
               />
             </TabsContent>
             <TabsContent value="hi">
-              <Image
+              <ImageViewer
                 src={`${imageShowUrl}/${admissionDetails?.admission?.app_hindi_qr_code}`}
                 alt="QR Code Hindi"
                 width={320}
@@ -107,7 +107,7 @@ export default function AdmissionProcess() {
               />
             </TabsContent>
             <TabsContent value="mh">
-              <Image
+              <ImageViewer
                 src={`${imageShowUrl}/${admissionDetails?.admission?.app_marathi_qr_code}`}
                 alt="QR Code Marathi"
                 width={320}

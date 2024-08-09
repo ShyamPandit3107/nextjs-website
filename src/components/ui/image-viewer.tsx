@@ -80,7 +80,7 @@ const ImageViewer = ({
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <ImageViewer
+        <Image
           src={src}
           alt={alt}
           className={`cursor-pointer ${className}`}
@@ -98,11 +98,11 @@ const ImageViewer = ({
             }}
           >
             <div className="min-w-full min-h-full flex items-center justify-center">
-              <ImageViewer
+              <Image
                 ref={imageRef}
                 src={src}
                 alt={alt}
-                className="max-w-none max-h-none transition-all duration-200 ease-in-out"
+                className="max-w-none max-h-none transition-all duration-200 ease-in-out w-auto h-auto"
                 style={{
                   transform: `scale(${scale}) rotate(${rotation}deg)`,
                   transformOrigin: "center center",
