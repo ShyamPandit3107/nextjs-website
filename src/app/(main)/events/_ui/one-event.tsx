@@ -62,11 +62,13 @@ export default function OneEvent({ evid }: { evid: string }) {
               <div>
                 <span className="font-semibold">Department:</span>
                 <div className="flex flex-wrap gap-2 mt-1">
-                  {oneEvent?.one_event?.for_department?.map((dept, index) => (
-                    <p key={index} className="text-sm ">
-                      {index + 1} ) {dept.dName}
-                    </p>
-                  ))}
+                  {oneEvent?.one_event?.for_department?.map(
+                    (dept: any, index: number) => (
+                      <p key={index} className="text-sm ">
+                        {index + 1} ) {dept.dName}
+                      </p>
+                    )
+                  )}
                 </div>
               </div>
             </div>

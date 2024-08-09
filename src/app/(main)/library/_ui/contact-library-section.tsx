@@ -27,7 +27,7 @@ const ContactLibrary = ({ contacts }: { contacts: any }) => {
                   {contact.contact_person_name
                     ? contact.contact_person_name
                         .split(" ")
-                        .map((n) => n[0])
+                        .map((n: any) => n[0])
                         .join("")
                         .toUpperCase()
                     : "N/A"}

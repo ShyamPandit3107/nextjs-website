@@ -10,10 +10,12 @@ const CarouselComponent = (images: any) => {
         {images.images.map((image: string, index: number) => (
           <CarouselItem key={index}>
             <div>
-              <img
+              <Image
                 src={`${imageShowUrl}/${image}`}
                 alt="images"
                 className="w-full bg-cover mb-10"
+                width={1000}
+                height={100}
               />
               {/* <CarouselPrevious className="text-white" />
             <CarouselNext /> */}

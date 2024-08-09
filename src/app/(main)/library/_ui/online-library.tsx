@@ -27,7 +27,7 @@ export default function LibraryOnline() {
     search: "",
   });
   console.log(getAllBookByLibrary);
-  const BookCard = ({ book }) => (
+  const BookCard = ({ book }: { book: any }) => (
     <Card
       className="flex items-center bg-white hover:bg-gray-50 shadow-md rounded-lg p-2 my-2 mx-4 cursor-pointer"
       onClick={() => setSelectedBook(book)}
@@ -57,7 +57,7 @@ export default function LibraryOnline() {
     </Card>
   );
 
-  const BookDetailsModal = ({ book, onClose }) => (
+  const BookDetailsModal = ({ book, onClose }: { book: any; onClose: any }) => (
     <Dialog open={!!book} onOpenChange={() => onClose()}>
       <DialogContent>
         <DialogHeader>
@@ -114,7 +114,7 @@ export default function LibraryOnline() {
     <div className="my-2">
       <Heading>Online Library</Heading>
       <div className="grid grid-cols-1 md:grid-cols-3">
-        {getAllBookByLibrary?.books?.map((book, index) => (
+        {getAllBookByLibrary?.books?.map((book: any, index: number) => (
           <BookCard key={index} book={book} />
         ))}
       </div>

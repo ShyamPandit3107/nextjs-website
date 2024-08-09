@@ -18,7 +18,7 @@ interface OnePaperProps {
 
 const OnePaper: React.FC<OnePaperProps> = ({ active, setActive }) => {
   const { data: oneRndSection } = useOneRndSection({
-    id: active,
+    id: active as string,
     page: 1,
     limit: 1000,
     flow: "PAPER",
@@ -34,7 +34,7 @@ const OnePaper: React.FC<OnePaperProps> = ({ active, setActive }) => {
       >
         Back
       </Button>
-      {oneRndSection?.all?.map((item, index) => (
+      {oneRndSection?.all?.map((item: any, index: number) => (
         <Card key={index}>
           <CardHeader>
             <CardTitle>{item?.title}</CardTitle>

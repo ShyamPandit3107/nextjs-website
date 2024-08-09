@@ -10,7 +10,7 @@ import React from "react";
 const Mou = () => {
   const id = useStore((state) => state.id);
   const { data: mouData } = useRndMou({
-    id: id,
+    id: id as string,
     page: 1,
     limit: 1000,
     search: "",

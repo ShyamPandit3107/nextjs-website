@@ -124,7 +124,7 @@ export default function AdmissionProcess() {
           <Carousel className="w-full max-w-3xl">
             <CarouselContent>
               {admissionGetSiteInfo?.admission_site?.video_gallery?.map(
-                (video, index) => (
+                (video: any, index: number) => (
                   <CarouselItem key={index}>
                     <div className="flex flex-col items-center justify-center w-full">
                       <iframe

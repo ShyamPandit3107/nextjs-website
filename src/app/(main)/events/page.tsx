@@ -18,7 +18,7 @@ const Events = () => {
   const [selectedContent, setSelectedContent] = useState(
     eid || allEvents?.all_events?.[0]._id
   );
-  const handleContentSelect = (item) => {
+  const handleContentSelect = (item: any) => {
     setSelectedContent(item);
     setIsSidebarOpen(false);
   };
@@ -42,7 +42,7 @@ const Events = () => {
           } md:block w-full md:w-64 bg-background p-4 h-[30rem] overflow-y-auto`}
         >
           <ul>
-            {allEvents?.all_events?.map((item, index) => (
+            {allEvents?.all_events?.map((item: any, index: number) => (
               <li key={index} className="mb-2">
                 <button
                   className={`w-full text-left p-4 hover:bg-primary hover:text-secondary focus:bg-primary focus:text-secondary transition-colors shadow-md bg-card rounded-sm ${

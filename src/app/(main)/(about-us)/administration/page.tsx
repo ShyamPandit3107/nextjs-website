@@ -15,13 +15,14 @@ const Administration = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const id = useStore((state) => state.id);
   const { data: websiteInfoByInstitute } = useWebsiteInfoByInstitute(id);
-  const [selectedContent, setSelectedContent] = useState("About Institute");
+  const [selectedContent, setSelectedContent] =
+    useState<any>("About Institute");
   const [administration, setAdministration] = useState([]);
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  const handleContentSelect = (item) => {
+  const handleContentSelect = (item: any) => {
     setSelectedContent(item);
     setIsSidebarOpen(false);
   };

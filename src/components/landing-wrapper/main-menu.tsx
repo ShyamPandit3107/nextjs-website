@@ -56,8 +56,11 @@ const MainMenu = ({ academicCourse }: { academicCourse: any }) => {
   const id = useStore((state) => state.id);
   const { data: websiteInfoByInstitute } = useWebsiteInfoByInstitute(id);
 
-  const toggleDropdown = (key) => {
-    setOpenDropdowns((prev) => ({ ...prev, [key]: !prev[key] }));
+  const toggleDropdown = (key: any) => {
+    setOpenDropdowns((prev: Record<string, boolean>) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
   };
 
   const MobileMenuItem = ({
@@ -71,7 +74,7 @@ const MainMenu = ({ academicCourse }: { academicCourse: any }) => {
     children?: React.ReactNode;
     hasDropdown?: boolean;
   }) => {
-    const isOpen = openDropdowns[title];
+    const isOpen = openDropdowns[title as keyof typeof openDropdowns] || false;
 
     return (
       <div className="py-2">

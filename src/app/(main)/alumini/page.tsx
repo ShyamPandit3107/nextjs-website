@@ -9,7 +9,7 @@ const Alumini = () => {
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
-  const handleContentSelect = (item) => {
+  const handleContentSelect = (item: any) => {
     setSelectedContent(item);
     setIsSidebarOpen(false);
   };

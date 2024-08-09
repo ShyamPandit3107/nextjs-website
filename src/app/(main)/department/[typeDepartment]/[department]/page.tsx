@@ -30,7 +30,7 @@ const Department = () => {
   const [currentDepartment, setCurrentDepartment] = useState();
   console.log(param);
   // fetching the department data from the API
-  const { data: departmentSiteInfo } = useDepartmentSiteInfo(did);
+  const { data: departmentSiteInfo } = useDepartmentSiteInfo(did as string);
   const { data: AllDepartment } = useAllDepartments(id);
   const searchParams = useSearchParams();
   const tab = searchParams.get("tab");
@@ -42,7 +42,7 @@ const Department = () => {
   useEffect(() => {
     if (AllDepartment?.institute?.depart) {
       const department = AllDepartment.institute.depart.find(
-        (item) => did === item?._id
+        (item: any) => did === item?._id
       );
       setCurrentDepartment(department);
     }
@@ -105,7 +105,7 @@ const Department = () => {
             hodDetails={currentDepartment}
           />
         ) : selectedContent === "faculties" ? (
-          <Faculties did={did} />
+          <Faculties did={did as string} />
         ) : selectedContent === "syllabus" ? (
           <Syllabus syllabus={departmentSiteInfo?.department_site?.syllabus} />
         ) : selectedContent === "laboratory" ? (
@@ -119,9 +119,9 @@ const Department = () => {
             data={departmentSiteInfo?.department_site?.student_achievements}
           />
         ) : selectedContent === "mou-collaboration" ? (
-          <MouCollaboration did={did} />
+          <MouCollaboration did={did as string} />
         ) : selectedContent === "activities" ? (
-          <ActivitiesTable did={did} />
+          <ActivitiesTable did={did as string} />
         ) : selectedContent === "innovative-practices" ? (
           <InnovativePractices
             data={departmentSiteInfo?.department_site?.innovative_practices}

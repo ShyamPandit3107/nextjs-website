@@ -6,21 +6,23 @@ import PDFViewer from "@/components/ui/PDFViewer";
 import { FileIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const SyllabusFeedback = ({ data }) => {
+const SyllabusFeedback = ({ data }: { data: any }) => {
   const [teachers, setTeachers] = useState([]);
   const [students, setStudents] = useState([]);
   const [viewPdf, setViewPdf] = useState<any>();
   useEffect(() => {
     if (data) {
-      const teachersData = data?.filter((item) => item.flow === "TEACHERS");
-      const studentsData = data?.filter((item) => item.flow === "STUDENT");
+      const teachersData = data?.filter(
+        (item: any) => item.flow === "TEACHERS"
+      );
+      const studentsData = data?.filter((item: any) => item.flow === "STUDENT");
       setTeachers(teachersData);
       setStudents(studentsData);
     }
   }, [data]);
 
-  const renderFeedbackItems = (items) => {
-    return items.map((item, index) => (
+  const renderFeedbackItems = (items: any) => {
+    return items.map((item: any, index: number) => (
       <Card
         key={index}
         className="mb-4 shadow-md hover:shadow-lg transition-shadow duration-300"

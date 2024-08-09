@@ -367,7 +367,7 @@ export const useOneIqacAuthority = (qcid: string | undefined) => {
 };
 
 export const useIqacComposition = (
-  data: { qcid: string; limit: number; page: number } | undefined
+  data: { qcid: string | undefined; limit: number; page: number } | undefined
 ) => {
   return useQuery({
     queryKey: ["iqacComposition", data?.qcid, data?.page, data?.limit],
@@ -379,7 +379,7 @@ export const useIqacComposition = (
 export const useIqacDetails = (
   data:
     | {
-        id: string;
+        id: string | undefined;
         page: number;
         limit: number;
         flow: string;
