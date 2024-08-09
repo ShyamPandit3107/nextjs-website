@@ -58,62 +58,60 @@ const AdmissionPage = () => {
   }, [tab]);
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <div className="flex flex-col md:flex-row border-t-1 border-back">
-        {/* Mobile menu button */}
-        <button
-          className="md:hidden p-4 bg-background text-primary"
-          onClick={toggleSidebar}
-        >
-          <Menu size={24} />
-        </button>
+    <div className="flex flex-col md:flex-row border-t-1 border-back">
+      {/* Mobile menu button */}
+      <button
+        className="md:hidden p-4 bg-background text-primary"
+        onClick={toggleSidebar}
+      >
+        <Menu size={24} />
+      </button>
 
-        {/* Sidebar */}
-        <div
-          className={`${
-            isSidebarOpen ? "block" : "hidden"
-          } md:block w-full md:w-64 bg-background p-4`}
-        >
-          <ul>
-            {Sidebar.map((item, index) => (
-              <li key={index} className="mb-2">
-                <Link
-                  className={`w-full text-left block p-4 hover:bg-primary hover:text-secondary focus:bg-primary focus:text-secondary transition-colors shadow-md bg-card rounded-sm ${
-                    selectedContent === item.url
-                      ? "bg-primary text-secondary"
-                      : ""
-                  }`}
-                  href={`/admission?tab=${item.url}`}
-                >
-                  {item.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Main content */}
-        <div className="flex-1 p-6">
-          {selectedContent === "about" ? (
-            <About data={admissionDetails?.admission_site?.admission_about} />
-          ) : selectedContent === "new-admission" ? (
-            <NewAdmission />
-          ) : selectedContent === "admission-enquiry" ? (
-            <AdmissionEnquiry />
-          ) : selectedContent === "admission-process" ? (
-            <AdmissionProcess />
-          ) : selectedContent === "document-checklist" ? (
-            <DocumentChecklist />
-          ) : selectedContent === "contact-us" ? (
-            <ContactUs
-              contacts={admissionDetails?.admission_site?.admission_contact}
-            />
-          ) : (
-            <About data={admissionDetails?.admission_site?.admission_about} />
-          )}
-        </div>
+      {/* Sidebar */}
+      <div
+        className={`${
+          isSidebarOpen ? "block" : "hidden"
+        } md:block w-full md:w-64 bg-background p-4`}
+      >
+        <ul>
+          {Sidebar.map((item, index) => (
+            <li key={index} className="mb-2">
+              <Link
+                className={`w-full text-left block p-4 hover:bg-primary hover:text-secondary focus:bg-primary focus:text-secondary transition-colors shadow-md bg-card rounded-sm ${
+                  selectedContent === item.url
+                    ? "bg-primary text-secondary"
+                    : ""
+                }`}
+                href={`/admission?tab=${item.url}`}
+              >
+                {item.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
-    </Suspense>
+
+      {/* Main content */}
+      <div className="flex-1 p-6">
+        {selectedContent === "about" ? (
+          <About data={admissionDetails?.admission_site?.admission_about} />
+        ) : selectedContent === "new-admission" ? (
+          <NewAdmission />
+        ) : selectedContent === "admission-enquiry" ? (
+          <AdmissionEnquiry />
+        ) : selectedContent === "admission-process" ? (
+          <AdmissionProcess />
+        ) : selectedContent === "document-checklist" ? (
+          <DocumentChecklist />
+        ) : selectedContent === "contact-us" ? (
+          <ContactUs
+            contacts={admissionDetails?.admission_site?.admission_contact}
+          />
+        ) : (
+          <About data={admissionDetails?.admission_site?.admission_about} />
+        )}
+      </div>
+    </div>
   );
 };
 
