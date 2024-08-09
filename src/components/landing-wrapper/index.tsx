@@ -93,9 +93,9 @@ const LandingWrapper = ({ children }: { children: React.ReactNode }) => {
     }
   }, [websiteInfoByInstitute]);
 
-  if (!isInstituteMasterFetched || !isWebsiteInfoFetched) {
-    return <div>Loading...</div>;
-  }
+  // if (!isInstituteMasterFetched || !isWebsiteInfoFetched) {
+  //   return <div>Loading...</div>;
+  // }
 
   return (
     <main className="flex flex-col min-h-screen">
